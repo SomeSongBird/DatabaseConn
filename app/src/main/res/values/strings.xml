@@ -4,4 +4,5 @@
     <string name="retrieve_button">Retrieve by ID</string>
     <string name="guessImDoingThis">First Name</string>
     <string name="mightAsWell">Last Name</string>
+    <string name="ohBoyAntoherone">Hire Date</string>
 </resources>

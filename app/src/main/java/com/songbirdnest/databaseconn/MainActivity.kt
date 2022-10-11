@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     // the employee data to be returned and displayed
     private lateinit var firstName: TextView
     private lateinit var lastName: TextView
+    private lateinit var hireDate: TextView
     private lateinit var errorLine:TextView
     private  lateinit var table: TableLayout
 
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         // to the UI
         firstName = findViewById(R.id.firstNameData)
         lastName = findViewById(R.id.lastNameData)
+        hireDate = findViewById(R.id.hireDateData)
         errorLine = findViewById(R.id.Error)
         table = findViewById(R.id.table)
     }
@@ -74,10 +76,12 @@ class MainActivity : AppCompatActivity() {
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
                 val splitResponse = response.split(' ')
-                val firstN = splitResponse[2].dropLast(4)
-                val lastN = splitResponse[4]
+                val firstN = splitResponse[2]
+                val lastN = splitResponse[5]
+                val hireD = splitResponse[8]
                 firstName.text = firstN// Do something with the response
                 lastName.text = lastN
+                hireDate.text = hireD
                 table.isVisible = true
             },
             { error ->
