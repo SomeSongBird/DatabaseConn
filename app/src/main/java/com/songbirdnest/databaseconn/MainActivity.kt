@@ -1,14 +1,20 @@
 package com.songbirdnest.databaseconn
 
+import android.content.Context
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
 import android.widget.EditText
 import android.widget.TableLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.android.volley.*
-import com.android.volley.toolbox.*
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.toolbox.BasicNetwork
+import com.android.volley.toolbox.DiskBasedCache
+import com.android.volley.toolbox.HurlStack
+import com.android.volley.toolbox.StringRequest
 
 
 class MainActivity : AppCompatActivity() {

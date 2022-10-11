@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/black"
+    android:columnCount="2"
+    android:paddingHorizontal="20dp"
     android:paddingStart="20dp"
     android:paddingTop="20dp"
-    android:paddingHorizontal="20dp"
-    android:background="@color/black"
     tools:context=".MainActivity">
 
     <TextView
+        style="@style/Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sensor_num"
-        style="@style/Text"/>
+        android:layout_column="0"
+        android:text="@string/sensor_num" />
 
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="1"
+        android:background="@color/offwhite"
         android:paddingHorizontal="10dp"
-        android:paddingVertical="5dp"
-        android:background="@color/offwhite">
+        android:paddingVertical="5dp">
+
         <EditText
             android:id="@+id/empToRetrieve"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="15"
+            android:ems="10"
             android:hint="499984"
             android:importantForAutofill="no"
             android:inputType="text"
@@ -39,20 +43,26 @@
         android:id="@+id/retrieveData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_column="0"
+        android:layout_gravity="fill_horizontal"
         android:onClick="retrieveData"
-        android:text="@string/retrieve_button"
         android:shadowColor="@color/background_green"
-        android:shadowRadius="1.5"/>
+        android:shadowRadius="1.5"
+        android:text="@string/retrieve_button" />
 
     <TableLayout
         android:id="@+id/table"
-        android:stretchColumns="1"
-        android:paddingVertical="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:background="@color/black" >
+        android:background="@color/black"
+        android:layout_column="1"
+        android:paddingVertical="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:stretchColumns="1"
+        android:layout_row="1"
+        android:layout_rowSpan="3"
+        android:visibility="invisible">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -60,38 +70,43 @@
 
             <TextView
                 android:id="@+id/FirstName"
-                android:text="@string/guessImDoingThis"
-                style="@style/Text"/>
+                style="@style/Text"
+                android:text="@string/guessImDoingThis" />
 
             <TextView
                 android:id="@+id/firstNameData"
+                style="@style/Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                style="@style/Text" />
+                android:text="" />
         </TableRow>
+
         <TableRow
             android:layout_width="wrap_content"
             android:layout_gravity="left">
+
             <TextView
                 android:id="@+id/lastName"
-                android:text="@string/mightAsWell"
-                style="@style/Text"/>
+                style="@style/Text"
+                android:text="@string/mightAsWell" />
 
             <TextView
                 android:id="@+id/lastNameData"
+                style="@style/Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=""
-                style="@style/Text" />
+                android:text="" />
         </TableRow>
     </TableLayout>
 
     <TextView
         android:id="@+id/Error"
-        android:visibility="invisible"
-        android:layout_height="wrap_content"
+        style="@style/Text"
         android:layout_width="match_parent"
-        style="@style/Text" />
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="fill_horizontal"
+        android:layout_columnSpan="2"
+        android:layout_column="0"/>
 
-</LinearLayout>
+</GridLayout>

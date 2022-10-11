@@ -2,4 +2,6 @@
     <string name="app_name">DatabaseConn</string>
     <string name="sensor_num">Enter Employee ID</string>
     <string name="retrieve_button">Retrieve by ID</string>
+    <string name="guessImDoingThis">First Name</string>
+    <string name="mightAsWell">Last Name</string>
 </resources>
