@@ -5,41 +5,93 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="20dp"
     android:paddingStart="20dp"
-    tools:context="com.songbirdnest.databaseconn.MainActivity">
+    android:paddingTop="20dp"
+    android:paddingHorizontal="20dp"
+    android:background="@color/black"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="@string/sensor_num" />
+        android:text="@string/sensor_num"
+        style="@style/Text"/>
 
-    <EditText
-        android:id="@+id/empToRetrieve"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="15"
-        android:hint="499984"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:minHeight="48dp" />
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:background="@color/offwhite">
+        <EditText
+            android:id="@+id/empToRetrieve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="15"
+            android:hint="499984"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:minHeight="48dp" />
+    </FrameLayout>
 
 
     <Button
         android:id="@+id/retrieveData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:onClick="retrieveData"
-        android:text="@string/retrieve_button" />
+        android:text="@string/retrieve_button"
+        android:shadowColor="@color/background_green"
+        android:shadowRadius="1.5"/>
+
+    <TableLayout
+        android:id="@+id/table"
+        android:stretchColumns="1"
+        android:paddingVertical="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:background="@color/black" >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_gravity="left">
+
+            <TextView
+                android:id="@+id/FirstName"
+                android:text="First Name"
+                style="@style/Text"/>
+
+            <TextView
+                android:id="@+id/firstNameData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                style="@style/Text" />
+        </TableRow>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_gravity="left">
+            <TextView
+                android:id="@+id/lastName"
+                android:text="Last Name"
+                style="@style/Text"/>
+
+            <TextView
+                android:id="@+id/lastNameData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                style="@style/Text" />
+        </TableRow>
+    </TableLayout>
 
     <TextView
-        android:id="@+id/employeeData"
-        android:layout_width="wrap_content"
+        android:id="@+id/Error"
+        android:visibility="invisible"
         android:layout_height="wrap_content"
-        android:ems="20"
-        android:layout_marginTop="20dp"
-        android:textSize="24sp"
-        android:text="Employee Data Displayed Here" />
+        android:layout_width="match_parent"
+        style="@style/Text" />
 
 </LinearLayout>

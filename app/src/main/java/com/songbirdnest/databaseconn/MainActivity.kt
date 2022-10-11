@@ -3,8 +3,10 @@ package com.songbirdnest.databaseconn
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TableLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.android.volley.*
 import com.android.volley.toolbox.*
 
@@ -15,7 +17,10 @@ class MainActivity : AppCompatActivity() {
     // the employee number to search on
     private lateinit var empToRetrieve: EditText
     // the employee data to be returned and displayed
-    private lateinit var employeeData: TextView
+    private lateinit var firstName: TextView
+    private lateinit var lastName: TextView
+    private lateinit var errorLine:TextView
+    private  lateinit var table: TableLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,13 +30,17 @@ class MainActivity : AppCompatActivity() {
         empToRetrieve = findViewById(R.id.empToRetrieve)
         // here is the var used for the returned query that will display
         // to the UI
-        employeeData = findViewById(R.id.employeeData)
+        firstName = findViewById(R.id.firstNameData)
+        lastName = findViewById(R.id.lastNameData)
+        errorLine = findViewById(R.id.Error)
+        table = findViewById(R.id.table)
     }
 
     // function to retrieve the data based on employee ID
     // this is tied to the "retrieveData" button
     fun  retrieveData(view: View){
-
+        table.isVisible = false
+        errorLine.isVisible = false
         // local function var that contains the employee to retrieve
         val employeeId = empToRetrieve.text.toString()
 
@@ -58,11 +67,17 @@ class MainActivity : AppCompatActivity() {
         // Formulate the request and handle the response.
         val stringRequest = StringRequest(Request.Method.GET, url,
             { response ->
-                employeeData.text = response// Do something with the response
+                val splitResponse = response.split(' ')
+                val firstN = splitResponse[2].dropLast(4)
+                val lastN = splitResponse[4]
+                firstName.text = firstN// Do something with the response
+                lastName.text = lastN
+                table.isVisible = true
             },
             { error ->
                 // Handle error
-                employeeData.text = "ERROR: %s".format(error.toString())
+                errorLine.text = "ERROR: %s".format(error.toString())
+                errorLine.isVisible=true
             })
 
         // Add the request to the RequestQueue.
